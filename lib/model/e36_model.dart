@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class SignUpModel extends ChangeNotifier {
+class E36Model extends ChangeNotifier {
   late String name;
   late String email;
   late int phoneNumber;
   late String password;
   late String image;
-
+  int counter = 0;
   nameNotifier() {
     name;
     notifyListeners();
@@ -29,6 +29,16 @@ class SignUpModel extends ChangeNotifier {
 
   imageNotifier() {
     image;
+    notifyListeners();
+  }
+
+  inc() {
+    counter++;
+    notifyListeners();
+  }
+
+  dec() {
+    counter--;
     notifyListeners();
   }
 }
