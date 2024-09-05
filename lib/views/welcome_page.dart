@@ -1,8 +1,10 @@
+import 'package:e36_bazzar/model/e36_model.dart';
 import 'package:e36_bazzar/views/details_page.dart';
 import 'package:e36_bazzar/widget/custom_app_bar.dart';
 import 'package:e36_bazzar/widget/custom_counter.dart';
 import 'package:e36_bazzar/widget/signup/custom_button.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
@@ -21,12 +23,33 @@ class WelcomePage extends StatelessWidget {
             height: 400,
             width: 500,
           ),
-          const Column(
+          Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Welcome mohamedragab74 ur email is'),
-              Text('mr341349@gmail.com and ur mobile number is'),
-              Text('01060659309'),
+              Consumer<E36Model>(
+                builder: (context, failName, child) {
+                  return Text(
+                    'Welcome ${failName.name} ur email is',
+                    style: const TextStyle(fontSize: 14),
+                  );
+                },
+              ),
+              Consumer<E36Model>(
+                builder: (context, failEmail, child) {
+                  return Text(
+                    '${failEmail.email} ur mobile number is',
+                    style: const TextStyle(fontSize: 14),
+                  );
+                },
+              ),
+              Consumer<E36Model>(
+                builder: (context, mobile, child) {
+                  return Text(
+                    '${mobile.phoneNumber}',
+                    style: const TextStyle(fontSize: 14),
+                  );
+                },
+              ),
             ],
           ),
           const SizedBox(

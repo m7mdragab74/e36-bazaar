@@ -1,4 +1,6 @@
+import 'package:e36_bazzar/model/e36_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({super.key});
@@ -9,35 +11,44 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       automaticallyImplyLeading: false,
       title: Row(
         children: [
-          CircleAvatar(
-            radius: 28,
-            backgroundColor: Colors.transparent,
-            child: Container(
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(
-                  color: Colors.white,
-                  width: 0.6,
+          Consumer<E36Model>(
+            builder: (context, image, child) {
+              return CircleAvatar(
+                radius: 28,
+                backgroundColor: Colors.transparent,
+                child: Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: Colors.white,
+                      width: 0.6,
+                    ),
+                  ),
+                  child: CircleAvatar(
+                    radius: 27,
+                    backgroundImage: NetworkImage(image.image.isNotEmpty
+                        ? image.image
+                        : 'https://avatar.iran.liara.run/public/31'),
+                  ),
                 ),
-              ),
-              child: const CircleAvatar(
-                radius: 27,
-                backgroundImage:
-                    NetworkImage("https://avatar.iran.liara.run/public/31"),
-              ),
-            ),
+              );
+            },
           ),
           const SizedBox(width: 10),
-          const Column(
+          Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Hi, Mohamed',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
+              Consumer<E36Model>(
+                builder: (context, name, child) {
+                  return Text(
+                    'Hi, ${name.name}',
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  );
+                },
               ),
-              Text(
+              const Text(
                 'How is your health?',
                 style: TextStyle(
                   fontSize: 15,
