@@ -1,4 +1,6 @@
+import 'package:e36_bazzar/model/e36_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CustomCounter extends StatelessWidget {
   const CustomCounter({super.key});
@@ -16,12 +18,18 @@ class CustomCounter extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          GestureDetector(
-            onTap: () {},
-            child: const Icon(
-              Icons.remove,
-              size: 15,
-            ),
+          Consumer<E36Model>(
+            builder: (context, myCounter, child) {
+              return GestureDetector(
+                onTap: () {
+                  myCounter.dec();
+                },
+                child: const Icon(
+                  Icons.remove,
+                  size: 15,
+                ),
+              );
+            },
           ),
           const SizedBox(
             height: 20,
@@ -31,9 +39,13 @@ class CustomCounter extends StatelessWidget {
               width: 1,
             ),
           ),
-          const Text(
-            '0',
-            style: TextStyle(fontSize: 14),
+          Consumer<E36Model>(
+            builder: (context, myCounter, child) {
+              return Text(
+                '${myCounter.counter}',
+                style: const TextStyle(fontSize: 14),
+              );
+            },
           ),
           const SizedBox(
             height: 20,
@@ -43,12 +55,18 @@ class CustomCounter extends StatelessWidget {
               width: 1,
             ),
           ),
-          GestureDetector(
-            onTap: () {},
-            child: const Icon(
-              Icons.add,
-              size: 15,
-            ),
+          Consumer<E36Model>(
+            builder: (context, myCounter, child) {
+              return GestureDetector(
+                onTap: () {
+                  myCounter.inc();
+                },
+                child: const Icon(
+                  Icons.add,
+                  size: 15,
+                ),
+              );
+            },
           ),
         ],
       ),

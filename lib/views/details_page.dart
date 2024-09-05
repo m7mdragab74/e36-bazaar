@@ -1,5 +1,7 @@
+import 'package:e36_bazzar/model/e36_model.dart';
 import 'package:e36_bazzar/widget/signup/custom_button.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class DetailsPage extends StatelessWidget {
   const DetailsPage({super.key});
@@ -57,9 +59,13 @@ class DetailsPage extends StatelessWidget {
             style: descriptionStyle,
           ),
           const SizedBox(height: 10),
-          const Text(
-            'Quantity: 0',
-            style: titleStyle,
+          Consumer<E36Model>(
+            builder: (context, myCounter, child) {
+              return Text(
+                'Quantity: ${myCounter.counter}',
+                style: const TextStyle(fontSize: 14),
+              );
+            },
           ),
           const SizedBox(height: 10),
           CustomButton(
