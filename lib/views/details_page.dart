@@ -18,6 +18,7 @@ class DetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xffF3EDD7),
       appBar: AppBar(
         title: const Text(
           'M3-E36',
@@ -30,7 +31,7 @@ class DetailsPage extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         children: [
           Image.asset(
-            'assets/e36.jpg',
+            'assets/e36logo.png',
             width: double.infinity,
             fit: BoxFit.cover,
           ),
