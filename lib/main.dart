@@ -1,4 +1,6 @@
+import 'package:e36_bazzar/model/e36_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'views/sign_up.dart';
 
@@ -11,9 +13,12 @@ class E36Bazaar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: SignUpPage(),
+    return ChangeNotifierProvider(
+      create: (BuildContext context) => E36Model(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: SignUpPage(),
+      ),
     );
   }
 }
