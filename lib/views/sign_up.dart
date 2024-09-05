@@ -1,3 +1,4 @@
+import 'package:e36_bazzar/views/welcome_page.dart';
 import 'package:e36_bazzar/widget/signup/agree_terms.dart';
 import 'package:e36_bazzar/widget/signup/custom_button.dart';
 import 'package:e36_bazzar/widget/signup/custom_text_field.dart';
@@ -10,14 +11,14 @@ class SignUpPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Color(0xffF3EDD7),
+    return Scaffold(
+      backgroundColor: const Color(0xffF3EDD7),
       body: Padding(
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Center(
+            const Center(
               child: Text(
                 'Sign Up',
                 style: TextStyle(
@@ -27,34 +28,34 @@ class SignUpPage extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 26,
             ),
-            CustomTextField(
+            const CustomTextField(
               label: 'Full Name',
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
-            CustomTextField(
+            const CustomTextField(
               label: 'Email',
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
-            CustomTextField(
+            const CustomTextField(
               label: 'Mobile Number',
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
-            CustomTextField(
+            const CustomTextField(
               label: 'Image Url',
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
-            CustomTextField(
+            const CustomTextField(
               label: 'Password',
               obscureText: true,
               icon: Icon(
@@ -62,11 +63,11 @@ class SignUpPage extends StatelessWidget {
                 size: 18,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 6,
             ),
-            AgreeTerms(),
-            SizedBox(
+            const AgreeTerms(),
+            const SizedBox(
               height: 6,
             ),
             CustomButton(
@@ -74,6 +75,13 @@ class SignUpPage extends StatelessWidget {
               fontSize: 18,
               textColor: Colors.white,
               height: 38,
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => WelcomePage(),
+                  ),
+                );
+              },
             )
           ],
         ),
