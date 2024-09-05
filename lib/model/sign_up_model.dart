@@ -5,6 +5,7 @@ class SignUpModel extends ChangeNotifier {
   late String email;
   late int phoneNumber;
   late String password;
+  late String image;
 
   nameNotifier() {
     name;
@@ -23,6 +24,11 @@ class SignUpModel extends ChangeNotifier {
 
   passwordNotifier() {
     password;
+    notifyListeners();
+  }
+
+  imageNotifier() {
+    image;
     notifyListeners();
   }
 }

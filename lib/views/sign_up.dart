@@ -49,6 +49,12 @@ class SignUpPage extends StatelessWidget {
               height: 15,
             ),
             CustomTextField(
+              label: 'Image Url',
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            CustomTextField(
               label: 'Password',
               obscureText: true,
               icon: Icon(
